@@ -1,0 +1,6 @@
+# Pinned 2026-11-24 (PyPI). Rebuilds of the template install exactly these versions.
+fastapi==0.165.0
+uvicorn==0.54.0
+python-multipart==0.0.34
+redis==8.2.0
+boto3==1.44.10
