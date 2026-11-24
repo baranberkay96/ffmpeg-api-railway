@@ -188,7 +188,8 @@ class Worker:
         else:
             name = fetch.download(job["input_url"], input_path, self.s.max_input_bytes, self.s.allow_private_urls)
             if not job.get("input_name") and name:
-                self.r.hset(store.job_key(job["id"]), "input_name", name[:200])
+                job["input_name"] = name[:200]
+                self.r.hset(store.job_key(job["id"]), "input_name", job["input_name"])
         if self.ids:
             os.chown(input_path, *self.ids)
         info = self._probe(input_path, workdir)
