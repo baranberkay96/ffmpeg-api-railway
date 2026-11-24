@@ -87,7 +87,7 @@ A finished job also carries `output.url`, a direct Bucket link valid for `PRESIG
 
 **Scaling**: raise the FFmpeg Worker's replicas (Settings, Deploy) to run more jobs in parallel; each replica takes one job at a time by default. Encoding is CPU-bound: give the worker more vCPU for faster jobs. Requests through Railway's public proxy are limited to about 15 minutes, so use `/v1/jobs` and polling or `callback_url` for long encodes.
 
-**Resources**: the API idles at about 70 MB RAM, a worker at about 40 MB plus FFmpeg while encoding (typically 150 MB to 1 GB depending on resolution and codec). Trial plans work for audio and HD video; 4K or AV1 encodes need more memory and CPU.
+**Resources** (measured on Railway): the API idles at about 80 MB RAM, a worker at about 55 MB and Redis at 30 MB. While encoding, FFmpeg uses the worker's vCPUs and memory depending on resolution and codec: a 1080p H.265 encode with 8 threads peaked at 1.8 GB. Trial plans (1 GB) suit audio, thumbnails and H.264 up to 1080p; set `FFMPEG_THREADS=2` there to keep memory low, and use Hobby or Pro for H.265, AV1 or 4K.
 
 **Upgrading**: FFmpeg and Python are pinned by digest in `services/ffmpeg/Dockerfile` of the template repository; change the `FFMPEG_IMAGE` tag and redeploy both services.
 

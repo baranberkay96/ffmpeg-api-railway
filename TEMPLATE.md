@@ -51,7 +51,7 @@ Restart policy `ALWAYS` on API and worker (they wait for Redis). Worker replicas
 
 ## Resource profile
 
-Idle (estimated before the deploy test, see report for measured): API ~70 MB, worker ~40 MB, Redis ~10 MB. While encoding, FFmpeg uses 150 MB-1 GB and all vCPUs it gets. Idle cost about $1.5/month RAM; encoding cost is CPU time ($20/vCPU-month). Minimum plan: Trial for audio and HD; Hobby for 4K/AV1 or several workers.
+Measured 2026-11-24: idle API 75-95 MB, worker 55 MB, Redis 30 MB. A 1080p60s H.265 (medium, 8 threads) encode peaked at 1.8 GB on the worker and finished in ~25 s; H.264/audio jobs stay well below 1 GB. Idle cost about $1.5/month RAM; encoding cost is CPU time ($20/vCPU-month). Minimum plan: Trial for audio and HD; Hobby for 4K/AV1 or several workers.
 
 ## Verification checklist
 
