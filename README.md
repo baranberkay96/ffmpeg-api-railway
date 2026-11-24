@@ -1,5 +1,7 @@
 # Deploy and Host FFmpeg API with Railway
 
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/ffmpeg-9-media-processing-api?referralCode=20H68q)
+
 FFmpeg is the open-source toolkit behind most video and audio processing. This template turns FFmpeg 9.1 into a private HTTP API: send a file or a URL, pick an operation (convert, extract audio, thumbnail, frames, GIF, probe or your own FFmpeg arguments) and download the result. An API key is generated at deploy time.
 
 > Community template, not affiliated with the FFmpeg project.
